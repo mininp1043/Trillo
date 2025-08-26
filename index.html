@@ -1,161 +1,167 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Aviso multilingüe</title>
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background-color: #556B2F; /* verde oliva oscuro */
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+    :root { --olive: #556B2F; --card-bg: rgba(0,0,0,0.22); }
+    * { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background-color: var(--olive);
+      color: #fff;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:18px;
     }
-    header {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
+    header{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-bottom:18px;
     }
-    header img {
-      width: 40px;
-      height: 25px;
-      cursor: pointer;
-      border: 2px solid white;
-      border-radius: 4px;
+    .flag {
+      width:48px;
+      height:32px;
+      object-fit:cover;
+      cursor:pointer;
+      border:2px solid rgba(255,255,255,0.95);
+      border-radius:6px;
+      background:#fff;
+      display:inline-block;
     }
-    .card {
-      background-color: rgba(0,0,0,0.2);
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 600px;
-      width: 100%;
+    .flag[aria-pressed="true"] {
+      outline:3px solid rgba(255, 215, 0, 0.8);
     }
-    h2 {
-      margin-top: 0;
-      color: #FFD700; /* dorado para el título */
+    .card{
+      width:100%;
+      max-width:760px;
+      background: var(--card-bg);
+      padding:18px;
+      border-radius:12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     }
-    ul {
-      padding-left: 20px;
-    }
-    li {
-      margin-bottom: 8px;
+    h2{ margin:0 0 10px 0; color:#FFD700; font-size:20px; }
+    ul{ margin:0; padding-left:20px; }
+    li{ margin:8px 0; }
+    @media (max-width:420px){
+      .flag{ width:38px; height:26px; }
+      h2{ font-size:18px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_Spain.svg" alt="Español" onclick="setLang('es')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Flag_of_France.svg" alt="Français" onclick="setLang('fr')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_United_Kingdom.svg" alt="English" onclick="setLang('en')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Flag_of_Germany.svg" alt="Deutsch" onclick="setLang('de')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Flag_of_Catalonia.svg" alt="Català" onclick="setLang('ca')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Galicia.svg" alt="Galego" onclick="setLang('gl')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Ikurriña.svg" alt="Euskara" onclick="setLang('eu')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Aragon.svg" alt="Fovano" onclick="setLang('fov')">
+  <header role="toolbar" aria-label="Selector de idioma">
+    <!-- Asegúrate de que estos archivos existan en /flags/ -->
+    <img class="flag" src="flags/es.svg" alt="Español" title="Español" onclick="setLang('es', this)" role="button" aria-label="Español">
+    <img class="flag" src="flags/fr.svg" alt="Français" title="Français" onclick="setLang('fr', this)" role="button" aria-label="Français">
+    <img class="flag" src="flags/gb.svg" alt="English" title="English" onclick="setLang('en', this)" role="button" aria-label="English">
+    <img class="flag" src="flags/de.svg" alt="Deutsch" title="Deutsch" onclick="setLang('de', this)" role="button" aria-label="Deutsch">
+    <img class="flag" src="flags/ca.svg" alt="Català" title="Català" onclick="setLang('ca', this)" role="button" aria-label="Català">
+    <img class="flag" src="flags/gl.svg" alt="Galego" title="Galego" onclick="setLang('gl', this)" role="button" aria-label="Galego">
+    <img class="flag" src="flags/eu.svg" alt="Euskara" title="Euskara" onclick="setLang('eu', this)" role="button" aria-label="Euskara">
+    <img class="flag" src="flags/aragon.svg" alt="Fovano (Aragón)" title="Fovano (Aragón)" onclick="setLang('fov', this)" role="button" aria-label="Fovano">
   </header>
 
-  <div class="card">
-    <h2 id="title"></h2>
-    <ul id="lines"></ul>
-  </div>
+  <main class="card" role="main" aria-live="polite">
+    <h2 id="title">⚠️ Atención: Propiedad privada</h2>
+    <ul id="lines">
+      <li>Camino de uso exclusivo. Prohibido el paso salvo vehículos de emergencia.</li>
+      <li>🔥 Prohibido hacer fuego.</li>
+      <li>⛺ Prohibido acampar.</li>
+      <li>🗑️ Llévate tu basura.</li>
+    </ul>
+  </main>
 
   <script>
     const MESSAGES = {
-      es: {
-        title: "⚠️ Atención: Propiedad privada",
-        lines: [
-          "Camino de uso exclusivo. Prohibido el paso salvo vehículos de emergencia.",
-          "🔥 Prohibido hacer fuego.",
-          "⛺ Prohibido acampar.",
-          "🗑️ Llévate tu basura."
-        ]
-      },
-      fov: {
-        title: "⚠️ Atención: Propiedat privada",
-        lines: [
-          "Camino ta uso esclusivo. Prohibido lo paso menos pa vehíclos d’emerchencia.",
-          "🔥 Prohibido fer fuego.",
-          "⛺ Prohibido acampar.",
-          "🗑️ Porta-te la basura."
-        ]
-      },
-      ca: {
-        title: "⚠️ Atenció: Propietat privada",
-        lines: [
-          "Camí d’ús exclusiu. Prohibit el pas excepte vehicles d’emergència.",
-          "🔥 Prohibit fer foc.",
-          "⛺ Prohibit acampar.",
-          "🗑️ Emporta’t les deixalles."
-        ]
-      },
-      gl: {
-        title: "⚠️ Atención: Propiedade privada",
-        lines: [
-          "Camiño de uso exclusivo. Prohibido o paso salvo vehículos de emerxencia.",
-          "🔥 Prohibido facer lume.",
-          "⛺ Prohibido acampar.",
-          "🗑️ Leva o lixo contigo."
-        ]
-      },
-      eu: {
-        title: "⚠️ Kontuz: Jabetza pribatua",
-        lines: [
-          "Bide erabilera esklusibokoa. Debekatuta sartzea, salbu larrialdi ibilgailuak.",
-          "🔥 Debekatuta sua egitea.",
-          "⛺ Debekatuta kanpatzea.",
-          "🗑️ Zure zaborra eraman."
-        ]
-      },
-      fr: {
-        title: "⚠️ Attention : Propriété privée",
-        lines: [
-          "Chemin à usage exclusif. Passage interdit sauf véhicules d’urgence.",
-          "🔥 Feu interdit.",
-          "⛺ Camping interdit.",
-          "🗑️ Ramassez vos déchets."
-        ]
-      },
-      en: {
-        title: "⚠️ Warning: Private property",
-        lines: [
-          "Restricted path. No entry except emergency vehicles.",
-          "🔥 No fires.",
-          "⛺ No camping.",
-          "🗑️ Take your trash with you."
-        ]
-      },
-      de: {
-        title: "⚠️ Achtung: Privatgrundstück",
-        lines: [
-          "Weg nur für den privaten Gebrauch. Zutritt verboten, außer für Einsatzfahrzeuge.",
-          "🔥 Offenes Feuer verboten.",
-          "⛺ Campen verboten.",
-          "🗑️ Nehmen Sie Ihren Müll mit."
-        ]
-      }
+      es: { title: "⚠️ Atención: Propiedad privada", lines: [
+        "Camino de uso exclusivo. Prohibido el paso salvo vehículos de emergencia.",
+        "🔥 Prohibido hacer fuego.",
+        "⛺ Prohibido acampar.",
+        "🗑️ Llévate tu basura."
+      ]},
+      fov: { title: "⚠️ Atención: Propiedat privada", lines: [
+        "Camino ta uso esclusivo. Prohibido lo paso menos pa vehíclos d’emerchencia.",
+        "🔥 Prohibido fer fuego.",
+        "⛺ Prohibido acampar.",
+        "🗑️ Porta-te la basura."
+      ]},
+      ca: { title: "⚠️ Atenció: Propietat privada", lines: [
+        "Camí d’ús exclusiu. Prohibit el pas excepte vehicles d’emergència.",
+        "🔥 Prohibit fer foc.",
+        "⛺ Prohibit acampar.",
+        "🗑️ Emporta’t les deixalles."
+      ]},
+      gl: { title: "⚠️ Atención: Propiedade privada", lines: [
+        "Camiño de uso exclusivo. Prohibido o paso salvo vehículos de emerxencia.",
+        "🔥 Prohibido facer lume.",
+        "⛺ Prohibido acampar.",
+        "🗑️ Leva o lixo contigo."
+      ]},
+      eu: { title: "⚠️ Kontuz: Jabetza pribatua", lines: [
+        "Bide erabilera esklusibokoa. Debekatuta sartzea, salbu larrialdi ibilgailuak.",
+        "🔥 Debekatuta sua egitea.",
+        "⛺ Debekatuta kanpatzea.",
+        "🗑️ Zure zaborra eraman."
+      ]},
+      fr: { title: "⚠️ Attention : Propriété privée", lines: [
+        "Chemin à usage exclusif. Passage interdit sauf véhicules d’urgence.",
+        "🔥 Feu interdit.",
+        "⛺ Camping interdit.",
+        "🗑️ Ramassez vos déchets."
+      ]},
+      en: { title: "⚠️ Warning: Private property", lines: [
+        "Restricted path. No entry except emergency vehicles.",
+        "🔥 No fires.",
+        "⛺ No camping.",
+        "🗑️ Take your trash with you."
+      ]},
+      de: { title: "⚠️ Achtung: Privatgrundstück", lines: [
+        "Weg nur für den privaten Gebrauch. Zutritt verboten, außer für Einsatzfahrzeuge.",
+        "🔥 Offenes Feuer verboten.",
+        "⛺ Campen verboten.",
+        "🗑️ Nehmen Sie Ihren Müll mit."
+      ]}
     };
 
-    function setLang(lang) {
+    function setLang(lang, imgEl){
       const data = MESSAGES[lang] || MESSAGES.es;
       document.getElementById('title').textContent = data.title;
       const ul = document.getElementById('lines');
       ul.innerHTML = '';
-      data.lines.forEach(line => {
+      data.lines.forEach(t => {
         const li = document.createElement('li');
-        li.textContent = line;
+        li.textContent = t;
         ul.appendChild(li);
       });
+      // marca visual en la bandera seleccionada
+      document.querySelectorAll('.flag').forEach(f => f.setAttribute('aria-pressed','false'));
+      if(imgEl) imgEl.setAttribute('aria-pressed','true');
+      // guarda preferencia
+      try { localStorage.setItem('lang', lang); } catch(e){}
+      // actualiza URL sin recargar
+      const u = new URL(window.location.href);
+      u.searchParams.set('lang', lang);
+      history.replaceState(null,'', u.toString());
     }
 
-    // Inicial: Español
-    setLang('es');
+    // inicial
+    (function(){
+      const fromUrl = new URL(window.location.href).searchParams.get('lang');
+      const saved = (function(){ try{ return localStorage.getItem('lang'); } catch(e){ return null; } })();
+      const pick = navigator.language ? navigator.language.split('-')[0] : 'es';
+      const preferred = fromUrl || saved || ( ['es','ca','gl','eu','fr','en','de'].includes(pick) ? pick : 'es' );
+      // intenta seleccionar la imagen correspondiente y marcarla
+      const mapToImg = { es:'flags/es.svg', fr:'flags/fr.svg', en:'flags/gb.svg', de:'flags/de.svg', ca:'flags/ca.svg', gl:'flags/gl.svg', eu:'flags/eu.svg', fov:'flags/aragon.svg' };
+      const imgSelector = Array.from(document.querySelectorAll('.flag')).find(i => i.getAttribute('onclick').includes("'"+preferred+"'"));
+      setLang(preferred, imgSelector || document.querySelector('.flag'));
+    })();
   </script>
 </body>
 </html>
