@@ -1,0 +1,67 @@
+<!doctype html>
+"Weg nur für den privaten Gebrauch. Zutritt verboten, außer für Einsatzfahrzeuge.",
+"🔥 Offenes Feuer verboten.",
+"⛺ Campen verboten.",
+"🗑️ Nehmen Sie Ihren Müll mit."
+]
+}
+};
+
+
+function pickFromNavigator() {
+const nav = (navigator.language || "es").toLowerCase();
+const base = nav.split('-')[0];
+const map = { es: 'es', ca: 'ca', gl: 'gl', eu: 'eu', fr: 'fr', en: 'en', de: 'de' };
+return map[base] || 'es';
+}
+
+
+function getLangFromURL() {
+const url = new URL(window.location.href);
+const qs = (url.searchParams.get('lang') || '').toLowerCase();
+const hash = (url.hash || '').replace('#','').toLowerCase();
+return qs || hash || null;
+}
+
+
+function validLang(code) { return Object.prototype.hasOwnProperty.call(MESSAGES, code); }
+
+
+function render(lang) {
+const data = MESSAGES[lang] || MESSAGES.es;
+document.documentElement.setAttribute('lang', lang.startsWith('en') ? 'en' : lang);
+document.getElementById('title').textContent = data.title;
+const ul = document.getElementById('lines');
+ul.innerHTML = '';
+data.lines.forEach(line => {
+const li = document.createElement('li');
+li.textContent = line;
+ul.appendChild(li);
+});
+const tag = document.getElementById('langTag');
+tag.textContent = `[${data.lang}]`;
+const sel = document.getElementById('langSelect');
+sel.value = lang;
+localStorage.setItem('lang', lang);
+// Actualiza la URL sin recargar para que puedas compartir el idioma concreto
+const url = new URL(window.location.href);
+url.searchParams.set('lang', lang);
+history.replaceState(null, '', url.toString());
+}
+
+
+// Inicialización
+(function init() {
+const saved = localStorage.getItem('lang');
+const fromURL = getLangFromURL();
+const initial = validLang(fromURL) ? fromURL : (validLang(saved) ? saved : pickFromNavigator());
+render(initial);
+document.getElementById('langSelect').addEventListener('change', (e) => {
+render(e.target.value);
+});
+// Fecha de actualización automática (opcional)
+document.getElementById('updated').textContent = new Date(document.lastModified).toLocaleDateString();
+})();
+</script>
+</body>
+</html>
