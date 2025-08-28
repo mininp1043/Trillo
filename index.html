@@ -15,6 +15,8 @@
       align-items:center;
       min-height:100vh;
       padding:20px;
+      font-size:18px; /* 🔹 letra más grande */
+      line-height:1.6;
     }
     header {
       display:flex;
@@ -41,27 +43,26 @@
     ul { list-style:none; padding:0; }
     li {
       display:flex;
-      align-items:flex-start;
-      margin:10px 0;
+      align-items:center; /* 🔹 centra verticalmente icono y texto */
+      margin:15px 0;
+      gap:15px; /* espacio entre icono y texto */
     }
     li img {
-      width:100px;
-      height:100px;
-      margin-right:20px;
+      width:80px;  /* 🔹 tamaño de icono ajustable */
+      height:80px;
       flex-shrink:0;
     }
-    /* Footer */
     .site-footer {
-      margin-top:auto;   /* Empuja el footer al final */
-      width:100%;
-      padding-top:20px;
+      margin-top: auto;
+      width: 100%;
+      padding-top: 12px;
     }
     .site-footer img {
-      display:block;
-      width:100%;
-      height:auto;
-      max-width:1200px;
-      margin:0 auto;
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 1200px;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -84,7 +85,6 @@
     <p id="closing"></p>
   </div>
 
-  <!-- Footer con imagen -->
   <footer class="site-footer">
     <img src="images/footer.png" alt="Decoración inferior">
   </footer>
@@ -93,7 +93,7 @@
     const TEXTS = {
       es: {
         title: "¡Hola!",
-        intro: "Gracias por tener en cuenta las indicaciones de este cartel. Recuerda, estás en una PROPIEDAD PRIVADA.",
+        intro: "Gracias por tener en cuenta las indicaciones de este cartel.<br>Recuerda, estás en una PROPIEDAD PRIVADA.", // 🔹 salto de línea
         rules: [
           {icon:"icons/trash.png", text:"Está prohibido tirar cualquier tipo de basura. Por favor, llévate tus residuos al punto de recogida más cercano."},
           {icon:"icons/car.png", text:"No está permitido circular por esta pista, excepto para vehículos autorizados y/o de emergencia."},
@@ -105,7 +105,7 @@
       },
       fov: {
         title: "¡Hola! Fabla Aragonesa",
-        intro:"Gracias por tener en cuenta las indicacions d’iste cartel. Recuerda, yes en una PROPIEDAT PRIVADA.",
+        intro:"Gracias por tener en cuenta las indicacions d’iste cartel.<br> Recuerda, yes en una PROPIEDAT PRIVADA.",
         rules:[
           {icon:"icons/trash.png", text:"Ye prohibito tirar cualsiquier tipo de vasura. Por favor, traye-te os tuyos residuos a o punto de replega mas amanau."},
           {icon:"icons/car.png", text:"Ye prohibito fer servir a pista con cualsiquier tipo de vehiclo, fueras d’os autorizaus y/u de emerxencia."},
@@ -117,7 +117,7 @@
       },
       eu: {
         title:"Kaixo! Euskera",
-        intro:"Eskerrik asko kartel honen oharrak kontuan hartzeagatik. Gogoratu, JABETZA PRIBATUAN zaude.",
+        intro:"Eskerrik asko kartel honen oharrak kontuan hartzeagatik.<br> Gogoratu, JABETZA PRIBATUAN zaude.",
         rules:[
           {icon:"icons/trash.png", text:"Debekatuta dago zaborrik botatzea. Mesedez, eraman zure hondakinak bilketa-punturik hurbilenera."},
           {icon:"icons/car.png", text:"Ez dago baimenduta pista honetatik ibiltzea, baimendutako ibilgailu edo larrialdietako ibilgailuentzat izan ezik."},
@@ -129,7 +129,7 @@
       },
       gl: {
         title:"Ola! Galego",
-        intro:"Grazas por ter en conta as indicacións deste cartel. Lembra, estás nunha PROPIEDADE PRIVADA.",
+        intro:"Grazas por ter en conta as indicacións deste cartel.<br> Lembra, estás nunha PROPIEDADE PRIVADA.",
         rules:[
           {icon:"icons/trash.png", text:"Está prohibido tirar calquera tipo de lixo. Por favor, leva os teus residuos ao punto de recollida máis próximo."},
           {icon:"icons/car.png", text:"Non está permitido circular por esta pista, excepto para vehículos autorizados e/ou de emerxencia."},
@@ -141,7 +141,7 @@
       },
       ca: {
         title:"Hola! Català",
-        intro:"Gràcies per tenir en compte les indicacions d'aquest cartell. Recorda, ets en una PROPIETAT PRIVADA.",
+        intro:"Gràcies per tenir en compte les indicacions d'aquest cartell.<br> Recorda, ets en una PROPIETAT PRIVADA.",
         rules:[
           {icon:"icons/trash.png", text:"Està prohibit llençar qualsevol tipus de brossa. Si us plau, emporta't els teus residus al punt de recollida més proper."},
           {icon:"icons/car.png", text:"No està permès circular per aquesta pista, excepte per a vehicles autoritzats i/o d'emergència."},
@@ -153,7 +153,7 @@
       },
       en: {
         title:"Hello! English",
-        intro:"Thank you for taking this sign's indications into account. Remember, you are on PRIVATE PROPERTY.",
+        intro:"Thank you for taking this sign's indications into account.<br> Remember, you are on PRIVATE PROPERTY.",
         rules:[
           {icon:"icons/trash.png", text:"It is forbidden to litter of any kind. Please take your waste to the nearest collection point."},
           {icon:"icons/car.png", text:"It is not allowed to drive on this track, except for authorized and/or emergency vehicles."},
@@ -165,7 +165,7 @@
       },
       de: {
         title:"Hallo! Deutsch",
-        intro:"Vielen Dank, dass Sie die Anweisungen auf diesem Schild beachten. Denken Sie daran, Sie befinden sich auf PRIVATBESITZ.",
+        intro:"Vielen Dank, dass Sie die Anweisungen auf diesem Schild beachten.<br> Denken Sie daran, Sie befinden sich auf PRIVATBESITZ.",
         rules:[
           {icon:"icons/trash.png", text:"Das Wegwerfen jeglicher Art von Müll ist verboten. Bitte nehmen Sie Ihren Müll mit zum nächsten Sammelpunkt."},
           {icon:"icons/car.png", text:"Das Befahren dieser Piste ist nicht gestattet, außer für autorisierte Fahrzeuge und/oder Rettungsfahrzeuge."},
@@ -177,7 +177,7 @@
       },
       fr: {
         title:"Bonjour! Français",
-        intro:"Merci de tenir compte des indications de ce panneau. N'oubliez pas, vous êtes sur une PROPRIÉTÉ PRIVÉE.",
+        intro:"Merci de tenir compte des indications de ce panneau.<br> N'oubliez pas, vous êtes sur une PROPRIÉTÉ PRIVÉE.",
         rules:[
           {icon:"icons/trash.png", text:"Il est interdit de jeter tout type de déchet. Veuillez emporter vos déchets jusqu'au point de collecte le plus proche."},
           {icon:"icons/car.png", text:"Il est interdit de circuler sur cette piste, sauf pour les véhicules autorisés et/ou d'urgence."},
@@ -192,7 +192,7 @@
     function setLang(lang){
       const data = TEXTS[lang] || TEXTS.es;
       document.getElementById("title").textContent = data.title;
-      document.getElementById("intro").textContent = data.intro;
+      document.getElementById("intro").innerHTML = data.intro; // 🔹 permite usar <br>
       const ul=document.getElementById("rules");
       ul.innerHTML="";
       data.rules.forEach(r=>{
@@ -200,7 +200,9 @@
         const img=document.createElement("img");
         img.src=r.icon; img.alt="";
         li.appendChild(img);
-        li.appendChild(document.createTextNode(r.text));
+        const text=document.createElement("span"); // 🔹 span para control de texto
+        text.textContent=r.text;
+        li.appendChild(text);
         ul.appendChild(li);
       });
       document.getElementById("closing").textContent=data.closing;
