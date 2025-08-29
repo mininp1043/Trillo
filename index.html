@@ -53,18 +53,16 @@
       flex-shrink:0;
     }
     .site-footer {
-  position: fixed;      /* 🔹 lo fija abajo */
-  bottom: 0;
-  left: 0;
   width: 100%;
-  overflow: hidden;     /* 🔹 oculta lo que se salga */
-  z-index: -1;          /* 🔹 manda detrás para que no tape el texto */
+  overflow: hidden;
 }
 
 .site-footer img {
   display: block;
   width: 100%;
   height: auto;
+  object-fit: cover;       /* hace que ocupe bien el ancho */
+  object-position: top;    /* 🔹 se asegura que muestre la parte superior de la imagen */
 }
   </style>
 </head>
