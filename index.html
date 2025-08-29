@@ -53,16 +53,18 @@
       flex-shrink:0;
     }
     .site-footer {
-      margin-top: auto;
-      width: 100%;
-      padding-top: 12px;
-    }
-    .site-footer img {
-  display:block;
-  width:100%;
-  height:auto;
-  max-width: 1200px;
-  margin: 0 auto;
+  position: fixed;      /* 🔹 lo fija abajo */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;     /* 🔹 oculta lo que se salga */
+  z-index: -1;          /* 🔹 manda detrás para que no tape el texto */
+}
+
+.site-footer img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
   </style>
 </head>
