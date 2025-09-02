@@ -92,7 +92,7 @@
           {icon:"icons/camp.png", text:"Está prohibido acampar y/o pernoctar en toda la zona."},
           
         ],
-        closing:"Respeta a los habitantes de esta tierra tanto si caminan sobre dos piernas o sobre dos, cuatro o más patas.<br> Agradecemos tu colaboración para cuidar de este entorno natural."
+        closing:"Respeta a los habitantes de esta tierra tanto si caminan sobre dos piernas o sobre dos, cuatro o más patas.<br/> Agradecemos tu colaboración para cuidar de este entorno natural."
       },
       fov: {
         title: "¡Hola!",
@@ -196,7 +196,7 @@
         li.appendChild(text);
         ul.appendChild(li);
       });
-      document.getElementById("closing").textContent=data.closing;
+      document.getElementById("closing").innerHTML = data.closing;
     }
 
     setLang("es");
